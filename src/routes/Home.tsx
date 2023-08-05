@@ -1,8 +1,11 @@
+import { UserProps } from "../types/User";
+
 import { useState } from "react";
+
 import Search from "../components/Search";
+import User from "../components/User";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
-import { UserProps } from "../types/User";
 
 const Home = () => {
   const [user, setUser] = useState<UserProps | null>(null);
@@ -43,7 +46,7 @@ const Home = () => {
     <div>
       <Search loadUser={loadUser} />
       {isLoading && <Loader />}
-      {user && <p>{user.login}</p>}
+      {user && <User {...user} />}
       {error && <Error />}
     </div>
   );
